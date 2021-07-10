@@ -1,16 +1,12 @@
 package securitis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import securitis.dao.RoleDao;
 import securitis.dao.UserDAO;
-import securitis.model.Role;
 import securitis.model.User;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 
