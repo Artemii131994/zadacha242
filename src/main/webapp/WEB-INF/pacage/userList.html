@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/JSP/Page">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<table border="1" cellpadding="4" cellspacing="0">
+    <h1>User Table</h1>
+    <br>
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th colspan="2">Operations</th>
+    </tr>
+
+
+    <tr th:each="allUser, state :${allUser}">
+
+
+        <td th:text="${allUser.name}"> name</td>
+        <td th:text="${allUser.surname}"> surname</td>
+        <td th:text="${allUser.department}"> department</td>
+        <td th:text="${allUser.salary}"> salary</td>
+        <td>
+
+<!--            <a th:href="@{/update/{id}(id=${allUser.id})}">update</a>-->
+<!--            <form th:method="GET" th:action="@{/update/{id}(id=${allUser.id})}">-->
+<!--                <input type="submit" value="edit"/>
+</form>-->
+
+         <a th:href="@{/update/{id}(id=${allUser.id})}">
+        <input type="button" value="Update" /></a></td>
+
+<!--            <a th:href="@{/deleteUser/{id}(id=${allUser.id})}">delete</a>-->
+
+
+
+        <td>
+        <form th:method="DELETE" th:action="@{/deleteUser/{id}(id=${allUser.id})}">
+        <input type="submit" value="Delete"/></form></td>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<input type="button" value="Add"
+       onclick="window.location.href = 'addNewUser'"/>
+
+</body>
+</html>

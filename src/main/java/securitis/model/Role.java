@@ -10,6 +10,7 @@ import java.util.Set;
 public class Role implements GrantedAuthority {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
