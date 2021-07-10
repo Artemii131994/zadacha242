@@ -3,12 +3,9 @@ package securitis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import securitis.model.User;
-import securitis.service.RoleServiceDao;
 import securitis.service.UserServiceDao;
-import securitis.service.UserServiceDaoImpl;
 
 import java.util.List;
 
@@ -17,8 +14,7 @@ import java.util.List;
 public class adminController {
     @Autowired
     private UserServiceDao userServiceDao;
-    @Autowired
-    private RoleServiceDao roleServiceDao;
+
 
     @GetMapping("/")
     public String showAllUser(Model model) {
