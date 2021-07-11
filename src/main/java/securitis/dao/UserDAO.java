@@ -5,7 +5,7 @@ import securitis.model.User;
 
 import java.util.List;
 
-;
+
 
 public interface UserDAO {
     public List<User> getAllUser();
@@ -19,5 +19,5 @@ public interface UserDAO {
     public void deleteUser(Long id);
 
 
-    User loadUserByUserName(String s);
+    public User ByUserName(String s);
 }

@@ -11,10 +11,10 @@
     <h1>User Table</h1>
     <br>
     <tr>
-        <th>Name</th>
-        <th>Surname</th>
+        <th>username</th>
+        <th>password</th>
         <th>Department</th>
-        <th>Salary</th>
+
         <th colspan="2">Operations</th>
     </tr>
 
@@ -22,10 +22,10 @@
     <tr th:each="allUser, state :${allUser}">
 
 
-        <td th:text="${allUser.name}"> name</td>
-        <td th:text="${allUser.surname}"> surname</td>
-        <td th:text="${allUser.department}"> department</td>
-        <td th:text="${allUser.salary}"> salary</td>
+        <td th:text="${allUser.username}"> username</td>
+        <td th:text="${allUser.password}"> password</td>
+        <td th:text="${allUser.email}"> email</td>
+
         <td>
 
 <!--            <a th:href="@{/update/{id}(id=${allUser.id})}">update</a>-->

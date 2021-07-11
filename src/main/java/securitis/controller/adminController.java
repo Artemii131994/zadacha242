@@ -12,11 +12,16 @@ import java.util.List;
 @Controller
 @RequestMapping("")
 public class adminController {
+
+//    @GetMapping("/")
+//    public String addNewUser(){
+//        return "h";
+//    }
     @Autowired
     private UserServiceDao userServiceDao;
 
 
-    @GetMapping("/")
+    @GetMapping("/admin")
     public String showAllUser(Model model) {
 
         List<User> allUser = userServiceDao.getAllUser();
@@ -24,37 +29,39 @@ public class adminController {
 
         return "userList";
     }
+//
+//    @GetMapping("/addNewUser")
+//    public String addNewUser(Model model){
+//
+//        User user = new User();
+//        model.addAttribute("user",user);
+//        return "createUser";
+//    }
+//
+//    @PostMapping("/saveUser")
+//    public String saveUser(@ModelAttribute("user") User user){
+//        userServiceDao.saveUser(user);
+//        return "redirect:/";
+//    }
+//
+//    @GetMapping(value = "/update/{id}")
+//    public String updateUser(Model model, @PathVariable("id") Long id) {
+//        User user = userServiceDao.getUser(id);
+//        model.addAttribute("user", user);
+//        return "updateUser";
+//    }
+//
+//    @PutMapping("/update")
+//    public String edit(@ModelAttribute("user") User user) {
+//        userServiceDao.update(user);
+//        return "redirect:/";
+//    }
+//
+//    @DeleteMapping("/deleteUser/{id}")
+//    public String deleteUser(@PathVariable(name = "id") Long id){
+//        userServiceDao.deleteUser(id);
+//        return "redirect:/";
+//    }
 
-    @GetMapping("/addNewUser")
-    public String addNewUser(Model model){
 
-        User user = new User();
-        model.addAttribute("user",user);
-        return "createUser";
-    }
-
-    @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user){
-        userServiceDao.saveUser(user);
-        return "redirect:/";
-    }
-
-    @GetMapping(value = "/update/{id}")
-    public String updateUser(Model model, @PathVariable("id") Long id) {
-        User user = userServiceDao.getUser(id);
-        model.addAttribute("user", user);
-        return "updateUser";
-    }
-
-    @PutMapping("/update")
-    public String edit(@ModelAttribute("user") User user) {
-        userServiceDao.update(user);
-        return "redirect:/";
-    }
-
-    @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") Long id){
-        userServiceDao.deleteUser(id);
-        return "redirect:/";
-    }
 }

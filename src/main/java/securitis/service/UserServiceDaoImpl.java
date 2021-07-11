@@ -1,6 +1,8 @@
 package securitis.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import securitis.dao.UserDAO;
@@ -50,8 +52,16 @@ public class UserServiceDaoImpl implements UserServiceDao{
 
     @Override
     @Transactional
-    public User loadUserByUserName(String s) {
-        return userDAO.loadUserByUserName(s);
+    public User ByUserName(String s) {
+        return userDAO.ByUserName(s);
     }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        User user = userDAO.ByUserName(s);
+        if (user == null){
+            throw new UsernameNotFoundException("User not found");
+        }
+        return user;
+    }
 }

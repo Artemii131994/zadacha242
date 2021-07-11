@@ -1,12 +1,13 @@
 package securitis.service;
 
+import org.springframework.security.core.userdetails.UserDetailsService;
 import securitis.model.Role;
 import securitis.model.User;
 
 import java.util.List;
 import java.util.Set;
 
-public interface UserServiceDao {
+public interface UserServiceDao extends UserDetailsService {
 
     public List<User> getAllUser();
 
@@ -19,6 +20,6 @@ public interface UserServiceDao {
     public void deleteUser(Long id);
 
 
-    User loadUserByUserName(String s);
+    User ByUserName(String s);
 
 }
