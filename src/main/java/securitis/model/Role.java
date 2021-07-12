@@ -17,7 +17,13 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles")
+//    @ManyToMany(mappedBy = "roles")
+
+    @Transient
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> users;
 
     public Role() {
@@ -31,6 +37,16 @@ public class Role implements GrantedAuthority {
         this.id = id;
         this.name = name;
     }
+
+    public Role(String name) {
+        if (name.equals("ADMIN")) {
+            this.id = 1L;
+        } else if (name.equals("USER")) {
+            this.id = 2L;
+        }
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }
@@ -58,5 +74,10 @@ public class Role implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return getName();
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/JSP/Page">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:c="http://java.sun.com/JSP/Page"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +14,8 @@
     <tr>
         <th>username</th>
         <th>password</th>
-        <th>Department</th>
+        <th>email</th>
+        <th>roles</th>
 
         <th colspan="2">Operations</th>
     </tr>
@@ -25,6 +27,15 @@
         <td th:text="${allUser.username}"> username</td>
         <td th:text="${allUser.password}"> password</td>
         <td th:text="${allUser.email}"> email</td>
+
+<!--        <td th:text = "${allUser.getRoles()}"></td>-->
+        <td th:text="${allUser.roles}"> roles</td>
+<!--        <td>-->
+<!--            <c:forEach items="${allUser.roles}" var="role">${role.name} </c:forEach>-->
+<!--        </td>-->
+<!--        <td>-->
+<!--        <span sec:authentication="principal.authorities" th:text="${allUser.roles}">roles</span>-->
+<!--        </td>-->
 
         <td>
 
