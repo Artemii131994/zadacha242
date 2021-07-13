@@ -63,17 +63,19 @@ public class adminController {
         return "redirect:/admin";
     }
 
-    @GetMapping(value = "/update")
-    public String updateUser(@RequestParam("id") Long id, ModelMap model) {
+    @GetMapping( "/update/{id}")
+    public String updateUser(@PathVariable("id") Long id, ModelMap model) {
         User user = userServiceDao.getUser(id);
         model.addAttribute("user", user);
         return "updateUser";
     }
 
-    @PutMapping("/update")
-    public String edit(@ModelAttribute("user") User user,
-
-                       @RequestParam("role") String[] role) {
+    @PostMapping("/updateSave")
+    public String edit(@ModelAttribute("user") @Valid User user,
+                       BindingResult bindingResult,
+                       @RequestParam("role") String[] role){
+        if (bindingResult.hasErrors())
+            return "updateUser";
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
             roleSet.add(userServiceDao.getByName(roles));
@@ -84,9 +86,10 @@ public class adminController {
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") Long id){
-        userServiceDao.deleteUser(id);
-        return "redirect:/";
+    public String deleteUser(@PathVariable(name = "id") String id){
+        Long userId = Long.parseLong(id);
+        userServiceDao.deleteUser(userId);
+        return "redirect:/admin";
     }
 
 

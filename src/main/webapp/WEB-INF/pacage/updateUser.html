@@ -9,8 +9,8 @@
 <div align="center">
     <h1>Update User</h1>
     <br/>
-    <form action="#" th:action="@{/update}" th:object="${user}"
-          th:method="PUT">
+    <form action="#" th:action="@{/updateSave}" th:object="${user}"
+          th:method="POST">
 
         <input type="hidden" th:field="*{id}" readonly="readonly"/>
 
@@ -30,11 +30,7 @@
                 <td>email:</td>
                 <td><input type="text" th:field="*{email}"/></td>
             </tr>
-<!--            <td>role:</td>&ndash;&gt;-->
-<!--            <td>-->
-<!--                <input type="checkbox" name="roles_s" value="ROLE_USER"/> USER-->
-<!--                <input type="checkbox" name="roles_s" value="ROLE_ADMIN"/> ADMIN-->
-<!--            </td>-->
+
             </tr>
             <select multiple size="2" name="role" >
                 <option value="ROLE_ADMIN">ROLE_ADMIN</option>
@@ -53,6 +49,35 @@
         </table>
     </form>
 
+</div>
+
+<!--<div align="center">-->
+<!--    <h2>Edit User:</h2>-->
+<!--    <form th:action="updateSave" th:method="POST" th:object="${user}">-->
+<!--        <input type="hidden" name="id" th:value="*{id}">-->
+<!--        <label for="login">Login</label>-->
+<!--        <br>-->
+<!--        <input id="login" name="login" type="text" th:value="*{username}">-->
+<!--        <div th:if="${#fields.hasErrors('login')}" th:errors="*{username}">Name error</div>-->
+<!--        <br>-->
+<!--        <label for="password">Password</label>-->
+<!--        <br>-->
+<!--        <input id="password" name="password" type="text" th:value="*{password}">-->
+<!--        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>-->
+<!--        <br>-->
+<!--        <label for="email">Email</label>-->
+<!--        <br>-->
+<!--        <input id="email" name="email" type="text" th:value="*{email}">-->
+<!--        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>-->
+<!--        <br>-->
+<!--        <br>-->
+<!--        <select multiple size="2" name="role" >-->
+<!--            <option value="ROLE_ADMIN">ROLE_ADMIN</option>-->
+<!--            <option selected="selected" value="ROLE_USER">ROLE_USER</option>-->
+<!--        </select>-->
+
+<!--        <input type="submit" value="Save">-->
+<!--    </form>-->
 </div>
 </body>
 </html>
