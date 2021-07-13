@@ -31,53 +31,35 @@
                 <td><input type="text" th:field="*{email}"/></td>
             </tr>
 
-            </tr>
-            <select multiple size="2" name="role" >
-                <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-                <option selected="selected" value="ROLE_USER">ROLE_USER</option>
-            </select>
             <tr>
+                <td>role:</td>
+                <td>
+                    <input type="checkbox" name="role" value="ROLE_USER"/> USER
+                    <input type="checkbox" name="role" value="ROLE_ADMIN"/> ADMIN
+                </td>
+            </tr>
+
+
                 <td colspan="2">
                     <button type="submit">Save</button>
                 </td>
             </tr>
+
             <tr>
                 <td colspan="2">
-                    <a th:href="@{/}">Back to User List</a>
+                    <a th:href="@{/admin}">Back to User List</a>
                 </td>
             </tr>
+
+            <tr>
+                <td>
+                    <a th:href="@{/logout}">Logout</a>
+
+                </td>
+            </tr>
+
         </table>
     </form>
-
-</div>
-
-<!--<div align="center">-->
-<!--    <h2>Edit User:</h2>-->
-<!--    <form th:action="updateSave" th:method="POST" th:object="${user}">-->
-<!--        <input type="hidden" name="id" th:value="*{id}">-->
-<!--        <label for="login">Login</label>-->
-<!--        <br>-->
-<!--        <input id="login" name="login" type="text" th:value="*{username}">-->
-<!--        <div th:if="${#fields.hasErrors('login')}" th:errors="*{username}">Name error</div>-->
-<!--        <br>-->
-<!--        <label for="password">Password</label>-->
-<!--        <br>-->
-<!--        <input id="password" name="password" type="text" th:value="*{password}">-->
-<!--        <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name error</div>-->
-<!--        <br>-->
-<!--        <label for="email">Email</label>-->
-<!--        <br>-->
-<!--        <input id="email" name="email" type="text" th:value="*{email}">-->
-<!--        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name error</div>-->
-<!--        <br>-->
-<!--        <br>-->
-<!--        <select multiple size="2" name="role" >-->
-<!--            <option value="ROLE_ADMIN">ROLE_ADMIN</option>-->
-<!--            <option selected="selected" value="ROLE_USER">ROLE_USER</option>-->
-<!--        </select>-->
-
-<!--        <input type="submit" value="Save">-->
-<!--    </form>-->
 </div>
 </body>
 </html>

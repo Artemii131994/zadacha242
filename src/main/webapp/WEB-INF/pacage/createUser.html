@@ -8,101 +8,51 @@
     <title>Create New Product</title>
 </head>
 <body>
-<!--<div align="center">-->
-<!--    <h1>Create New User</h1>-->
-<!--    <br/>-->
-<!--    <form action="#" th:action="@{/saveUser}" th:object="${user}"-->
-<!--          th:method="POST">-->
-
-<!--        <table border="0" cellpadding="10">-->
-<!--            <tr>-->
-<!--                <td> username:</td>-->
-<!--                <td><input type="text" th:field="*{username}"/></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>password:</td>-->
-<!--                <td><input type="text" th:field="*{password}"/></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td>email:</td>-->
-<!--                <td><input type="text" th:field="*{email}"/></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--            <td>role:</td>-->
-<!--                <td>-->
-<!--            <input type="checkbox" name="roles_s" value="ROLE_USER"/> USER-->
-<!--            <input type="checkbox" name="roles_s" value="ROLE_ADMIN"/> ADMIN-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--&lt;!&ndash;            <label for="roles">Enter roles:</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="text" th:field="*{roles}" id="roles"/>&ndash;&gt;-->
-<!--&lt;!&ndash;            <tr>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td>Salary:</td>&ndash;&gt;-->
-<!--&lt;!&ndash;                <td><input type="text" th:field="*{salary}"/></td>&ndash;&gt;-->
-<!--&lt;!&ndash;            </tr>&ndash;&gt;-->
-<!--            <tr>-->
-<!--                <td colspan="2">-->
-<!--                    <button type="submit">Save</button>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td colspan="2"><a th:href="@{/admin}">Back to User List</a></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--    </form>-->
-<!--</div>-->
 <div align="center">
-<form action="#" th:action="@{/saveUser}" th:object="${user}"
-            th:method="POST">
-    <br/> Name:
-    <input type="text" th:field="*{username}"/>
-    <br/> Email:
-    <input type="text" th:field="*{email}"/>
-    <br/> Password:
-    <input type="text" th:field="*{password}"/>
-<!--    <br/>-->
-<!--    <input type="checkbox" name="roles" value="ROLE_USER"/> USER-->
-<!--    <input type="checkbox" name="roles" value="ROLE_ADMIN"/> ADMIN-->
+    <h1>Create New User</h1>
+    <br/>
+    <form action="#" th:action="@{/saveUser}" th:object="${user}"
+          th:method="POST">
 
-<!--    <label class="col-form-label col-sm-4">Roles:</label>-->
-<!--    <div class="col-sm-8 text-left">-->
-<!--        <th:block th:each = "role : ${roleList}">-->
-<!--            <div>-->
-<!--                <input type="checkbox" th:field="*{roles}" th:text="${role.name}"-->
-<!--                       th:value ="${role.id}" class="m-2"/>-->
-<!--            </div>-->
-<!--        </th:block>-->
-<!--    </div>-->
+        <table border="0" cellpadding="10">
+            <tr>
+                <td> username:</td>
+                <td><input type="text" th:field="*{username}"/></td>
+            </tr>
+            <tr>
+                <td>password:</td>
+                <td><input type="text" th:field="*{password}"/></td>
+            </tr>
+            <tr>
+                <td>email:</td>
+                <td><input type="text" th:field="*{email}"/></td>
+            </tr>
+            <tr>
+            <td>role:</td>
+                <td>
+            <input type="checkbox" name="role" value="ROLE_USER"/> USER
+            <input type="checkbox" name="role" value="ROLE_ADMIN"/> ADMIN
+                </td>
+            </tr>
 
-<!--    <p>-->
-<!--        <label th:for="roles">Roles </label>-->
-<!--        <select multiple name="roles" size="3" th:id="roles" required>-->
-<!--            <option disabled>Select roles</option>-->
-<!--            <option th:each="role : ${roleList}" th:value="${role}" th:text="${role.name}"></option>-->
-<!--        </select>-->
-<!--    </p>-->
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><a th:href="@{/admin}">Back to User List</a></td>
 
-<!--    <label>-->
-<!--        <input type="checkbox"-->
-<!--               name="roleAdmin"-->
-<!--               th:value="ROLE_ADMIN"-->
-<!--               th:text="Admin">-->
-<!--    </label>-->
-<!--    <br/>-->
-<!--    <label>-->
-<!--        <input type="checkbox"-->
-<!--               name="roleUser"-->
-<!--               th:value="ROLE_USER"-->
-<!--               th:text="User">-->
-<!--    </label>-->
+            </tr>
+            <tr>
+                <td>
+            <a th:href="@{/logout}">Logout</a>
+                </td>
+            </tr>
+        </table>
 
-    <select multiple size="2" name="role">
-        <option value="ROLE_ADMIN">ROLE_ADMIN</option>
-        <option selected="selected" value="ROLE_USER">ROLE_USER</option>
-    </select>
-    <input type="submit" value="Save"/>
 </form>
-<a th:href="@{/logout}">Logout</a>
+
 </div>
-    </body>
-    </html>
+</body>
+</html>

@@ -27,32 +27,11 @@
         <td th:text="${allUser.username}"> username</td>
         <td th:text="${allUser.password}"> password</td>
         <td th:text="${allUser.email}"> email</td>
-<!--        <td>-->
-<!--            <th:block th:each="role : ${allUser.roles}">-->
-<!--                <a th:text="${role.name} + ';'"></a>-->
-<!--            </th:block>-->
-<!--        </td>-->
-
         <td th:text="${allUser.roles}"> roles</td>
-<!--        <td>-->
-<!--            <c:forEach items="${allUser.roles}" var="role">${role.name} </c:forEach>-->
-<!--        </td>-->
-<!--        <td>-->
-<!--        <span sec:authentication="principal.authorities" th:text="${allUser.roles}">roles</span>-->
-<!--        </td>-->
-
         <td>
-
-<!--            <a th:href="@{/update/{id}(id=${allUser.id})}">update</a>-->
-<!--            <form th:method="GET" th:action="@{/update/{id}(id=${allUser.id})}">-->
-<!--                <input type="submit" value="edit"/>
-</form>-->
 
          <a th:href="@{/update/{id}(id=${allUser.id})}">
         <input type="button" value="Update" /></a></td>
-
-<!--            <a th:href="@{/deleteUser/{id}(id=${allUser.id})}">delete</a>-->
-
 
 
         <td>
@@ -64,8 +43,14 @@
 
 <br>
 
-<input type="button" value="Add"
+<input type="button" value="CREATE NEW USER"
        onclick="window.location.href = 'addNewUser'"/>
+
+<input type="button" value="TABLE USERS"
+       onclick="window.location.href = 'user'"/>
+
+<input type="button" value="LOGOUT"
+       onclick="window.location.href = 'logout'"/>
 
 </body>
 </html>
