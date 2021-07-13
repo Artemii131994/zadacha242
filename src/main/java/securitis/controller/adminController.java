@@ -3,12 +3,15 @@ package securitis.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import securitis.model.Role;
 import securitis.model.User;
 
 import securitis.service.UserServiceDao;
 
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,32 +43,44 @@ public class adminController {
     @GetMapping("/addNewUser")
     public String addNewUser(Model model){
 
-//        User user = new User();
-//        List<Role> roleList = userServiceDao.getAllRoles();
-//        model.addAttribute("roleList",userServiceDao.getAllRoles());
-        model.addAttribute("user",new User());
-        model.addAttribute("roleList", userServiceDao.getRole());
+        User user = new User();
+        model.addAttribute("user",user);
+
         return "createUser";
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user) {
-        userServiceDao.saveUser(user);
+    public String saveUser(@ModelAttribute("user")  User user,
+                           @RequestParam("role") String[] role) {
+
+        Set<Role> roleSet = new HashSet<>();
+        for (String roles : role) {
+            roleSet.add(userServiceDao.getByName(roles));
+        }
+        user.setRoles(roleSet);
+        userServiceDao.update(user);
 
         return "redirect:/admin";
     }
 
-    @GetMapping(value = "/update/{id}")
-    public String updateUser(Model model, @PathVariable("id") Long id) {
+    @GetMapping(value = "/update")
+    public String updateUser(@RequestParam("id") Long id, ModelMap model) {
         User user = userServiceDao.getUser(id);
         model.addAttribute("user", user);
         return "updateUser";
     }
 
     @PutMapping("/update")
-    public String edit(@ModelAttribute("user") User user) {
+    public String edit(@ModelAttribute("user") User user,
+
+                       @RequestParam("role") String[] role) {
+        Set<Role> roleSet = new HashSet<>();
+        for (String roles : role) {
+            roleSet.add(userServiceDao.getByName(roles));
+        }
+        user.setRoles(roleSet);
         userServiceDao.update(user);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
     @DeleteMapping("/deleteUser/{id}")
@@ -76,22 +91,3 @@ public class adminController {
 
 
 }
-//    @GetMapping("/addNewUser")
-//    public String addNewUser(Model model){
-//
-//        User user = new User();
-//        model.addAttribute("user",user);
-//        return "createUser";
-//    }
-//
-//    @PostMapping("/saveUser")
-//    public String saveUser(@ModelAttribute("user") User user,
-//                           @RequestParam(value = "roles_s", required = false) String[] role) {
-//        Set<Role> rolesSet = new HashSet<>();
-//        for (String roles : role) {
-//            rolesSet.add(roleServiceDao.getByName(roles));
-//        }
-//        user.setRoles(rolesSet);
-//        userServiceDao.saveUser(user);
-//        return "redirect:/admin";
-//    }

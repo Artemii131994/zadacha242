@@ -35,4 +35,6 @@ public interface UserServiceDao extends UserDetailsService {
 
     public Set<Role> getRole();
 
+    public Role getDefaultRole();
+
 }

@@ -17,6 +17,7 @@ public class RoleDAOImpl implements RoleDAO{
     @PersistenceContext
     private EntityManager entityManager;
 
+//    private UserDAO userDAO;
 
     @Override
     public List<Role> getAllRoles() {
@@ -63,7 +64,12 @@ public class RoleDAOImpl implements RoleDAO{
         Set<Role> setrole = new HashSet<>();
         List<Role> listrole = entityManager.createQuery("select role from Role role").getResultList();
         setrole.addAll(listrole);
+
         return setrole;
     }
 
+    @Override
+    public Role getDefaultRole() {
+        return getByName("ROLE_GUEST");
+    }
 }

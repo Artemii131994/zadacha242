@@ -113,4 +113,9 @@ public class UserServiceDaoImpl implements UserServiceDao{
         }
         return user;
     }
+    @Override
+    @Transactional
+    public Role getDefaultRole(){
+       return  roleDAO.getDefaultRole();
+    }
 }

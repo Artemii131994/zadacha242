@@ -61,8 +61,8 @@
     <br/> Password:
     <input type="text" th:field="*{password}"/>
 <!--    <br/>-->
-<!--    <input type="checkbox" name="roles_s" value="ROLE_USER"/> USER-->
-<!--    <input type="checkbox" name="roles_s" value="ROLE_ADMIN"/> ADMIN-->
+<!--    <input type="checkbox" name="roles" value="ROLE_USER"/> USER-->
+<!--    <input type="checkbox" name="roles" value="ROLE_ADMIN"/> ADMIN-->
 
 <!--    <label class="col-form-label col-sm-4">Roles:</label>-->
 <!--    <div class="col-sm-8 text-left">-->
@@ -74,13 +74,32 @@
 <!--        </th:block>-->
 <!--    </div>-->
 
-    <p>
-        <label th:for="roles">Roles </label>
-        <select multiple name="roles" size="3" th:id="roles" required>
-            <option disabled>Select roles</option>
-            <option th:each="role : ${roleList}" th:value="${role}" th:text="${role.name}"></option>
-        </select>
-    </p>
+<!--    <p>-->
+<!--        <label th:for="roles">Roles </label>-->
+<!--        <select multiple name="roles" size="3" th:id="roles" required>-->
+<!--            <option disabled>Select roles</option>-->
+<!--            <option th:each="role : ${roleList}" th:value="${role}" th:text="${role.name}"></option>-->
+<!--        </select>-->
+<!--    </p>-->
+
+<!--    <label>-->
+<!--        <input type="checkbox"-->
+<!--               name="roleAdmin"-->
+<!--               th:value="ROLE_ADMIN"-->
+<!--               th:text="Admin">-->
+<!--    </label>-->
+<!--    <br/>-->
+<!--    <label>-->
+<!--        <input type="checkbox"-->
+<!--               name="roleUser"-->
+<!--               th:value="ROLE_USER"-->
+<!--               th:text="User">-->
+<!--    </label>-->
+
+    <select multiple size="2" name="role">
+        <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+        <option selected="selected" value="ROLE_USER">ROLE_USER</option>
+    </select>
     <input type="submit" value="Save"/>
 </form>
 <a th:href="@{/logout}">Logout</a>

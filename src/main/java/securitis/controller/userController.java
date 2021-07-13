@@ -1,6 +1,7 @@
 package securitis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -22,12 +23,12 @@ public class userController {
 
     @GetMapping("/user")
     public String showAllUser(Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("user_user", user);
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        model.addAttribute("user_user", userServiceDao.ByUserName(auth.getName()));
 //        User user = userServiceDao.ByUserName(principal.getName());
 //        model.addAttribute(user);
-//        List<User> user = userServiceDao.getAllUser();
-//        model.addAttribute("user_user", user);
+        List<User> user = userServiceDao.getAllUser();
+        model.addAttribute("user_user", user);
 
 
 //        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

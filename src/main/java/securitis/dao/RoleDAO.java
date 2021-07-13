@@ -18,4 +18,5 @@ public interface RoleDAO {
     Role getByName(String name);
     Set<Role> findRoleSetById(Integer[] id_roles);
     public Set<Role> getRole();
+    public Role getDefaultRole();
 }

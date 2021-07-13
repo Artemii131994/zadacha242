@@ -9,7 +9,7 @@
 <table border="1">
     <caption>Users Table</caption>
     <tr>
-        <th> id</th>
+
         <th> username</th>
         <th> password</th>
         <th> email</th>
@@ -18,7 +18,7 @@
 
     <tr th:each="user:${user_user}">
 
-        <td th:text="${user.getId()}"> id</td>
+
         <td th:text="${user.getUsername()}"> username</td>
         <td th:text="${user.getPassword()}"> password</td>
         <td th:text="${user.getEmail()}"> email</td>

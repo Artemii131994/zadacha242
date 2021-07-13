@@ -12,17 +12,17 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-    @Column(name = "id")
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+//(name = "name", unique = true, nullable = false)
 
-    @Column(name = "name", unique = true, nullable = false)
     private String username;
 
-    @Column(name = "password")
+
     private String password;
 
-    @Column(name = "email")
+
     private String email;
 
     @Transient

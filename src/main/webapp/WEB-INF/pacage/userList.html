@@ -27,13 +27,13 @@
         <td th:text="${allUser.username}"> username</td>
         <td th:text="${allUser.password}"> password</td>
         <td th:text="${allUser.email}"> email</td>
-        <td>
-            <th:block th:each="role : ${allUser.roles}">
-                <a th:text="${role.name} + ';'"></a>
-            </th:block>
-        </td>
+<!--        <td>-->
+<!--            <th:block th:each="role : ${allUser.roles}">-->
+<!--                <a th:text="${role.name} + ';'"></a>-->
+<!--            </th:block>-->
+<!--        </td>-->
 
-<!--        <td th:text="${allUser.roles}"> roles</td>-->
+        <td th:text="${allUser.roles}"> roles</td>
 <!--        <td>-->
 <!--            <c:forEach items="${allUser.roles}" var="role">${role.name} </c:forEach>-->
 <!--        </td>-->
