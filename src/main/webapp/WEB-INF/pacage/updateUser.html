@@ -19,20 +19,22 @@
             <tr>
                 <td> Name:</td>
                 <td>
-                    <input type="text" th:field="*{name}"/>
+                    <input type="text" th:field="*{username}"/>
                 </td>
             </tr>
             <tr>
-                <td>Surname:</td>
-                <td><input type="text" th:field="*{surname}"/></td>
+                <td>password:</td>
+                <td><input type="text" th:field="*{password}"/></td>
             </tr>
             <tr>
-                <td>Department:</td>
-                <td><input type="text" th:field="*{department}"/></td>
+                <td>email:</td>
+                <td><input type="text" th:field="*{email}"/></td>
             </tr>
-            <tr>
-                <td>Salary:</td>
-                <td><input type="text" th:field="*{salary}"/></td>
+            <td>role:</td>-->
+            <td>
+                <input type="checkbox" name="roles_s" value="ROLE_USER"/> USER
+                <input type="checkbox" name="roles_s" value="ROLE_ADMIN"/> ADMIN
+            </td>
             </tr>
             <tr>
                 <td colspan="2">

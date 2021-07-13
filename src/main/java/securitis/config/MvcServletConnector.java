@@ -12,7 +12,7 @@ public class MvcServletConnector extends AbstractAnnotationConfigDispatcherServl
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{SpringConfig.class};
     }
 
     @Override

@@ -22,4 +22,17 @@ public interface UserServiceDao extends UserDetailsService {
 
     User ByUserName(String s);
 
+    List<Role> getAllRoles();
+
+    void add(Role role);
+
+    void edit(Role role);
+
+    Role getById(long id);
+
+    Role getByName(String name);
+    Set<Role> findRoleSetById(Integer[] id_roles);
+
+    public Set<Role> getRole();
+
 }

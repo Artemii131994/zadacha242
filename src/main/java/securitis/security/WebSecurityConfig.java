@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import org.springframework.web.filter.HiddenHttpMethodFilter;
 import securitis.service.UserServiceDao;
 
 
@@ -39,13 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        http.csrf().disable();
-//        http.authorizeRequests().antMatchers("/login").anonymous()
-//                .antMatchers("/","/admin").hasAnyAuthority("ADMIN","USER")
-//                .antMatchers("/","/user").hasAnyAuthority("ADMIN", "USER")
-//                .anyRequest().authenticated().and().formLogin().successHandler(new SuccessUserHandler());
-//        http.logout().permitAll().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").and().csrf().disable();
-//    }
+
 
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/login").anonymous()
@@ -67,28 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return daoAuthenticationProvider;
     }
 
-//    private final UserDetailsService userDetailsService;
-//    private final SuccessUserHandler successUserHandler;
-//    @Autowired
-//    public WebSecurityConfig(UserDetailsService userDetailsService, SuccessUserHandler successUserHandler) {
-//        this.userDetailsService = userDetailsService;
-//        this.successUserHandler = successUserHandler;
-//    }
-//
-//    @Bean
-//    protected DaoAuthenticationProvider daoAuthenticationProvider(){
-//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-//        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-//        return daoAuthenticationProvider;
-//    }
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.authenticationProvider(daoAuthenticationProvider());
-//    }
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+    @Bean
+    HiddenHttpMethodFilter hiddenHttpMethodFilter() {
+        return new HiddenHttpMethodFilter();
+    }
 
 }
