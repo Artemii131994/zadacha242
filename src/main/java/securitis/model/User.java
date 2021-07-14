@@ -12,10 +12,8 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//(name = "name", unique = true, nullable = false)
 
     private String username;
 

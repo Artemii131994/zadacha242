@@ -20,7 +20,7 @@ import java.util.Set;
 @RequestMapping("")
 public class adminController {
 
-     private UserServiceDao userServiceDao;
+    private UserServiceDao userServiceDao;
 
     @Autowired
     public adminController(UserServiceDao userServiceDao) {
@@ -36,14 +36,14 @@ public class adminController {
     }
 
     @GetMapping("/addNewUser")
-    public String addNewUser(Model model){
+    public String addNewUser(Model model) {
         User user = new User();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "createUser";
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user")  User user,
+    public String saveUser(@ModelAttribute("user") User user,
                            @RequestParam("role") String[] role) {
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
@@ -55,16 +55,16 @@ public class adminController {
         return "redirect:/admin";
     }
 
-    @GetMapping( "/update/{id}")
+    @GetMapping("/update/{id}")
     public String updateUser(@PathVariable("id") Long id, ModelMap model) {
         User user = userServiceDao.getUser(id);
         model.addAttribute("user", user);
         return "updateUser";
     }
 
-    @PostMapping("/updateSave")
+    @PutMapping("/updateSave")
     public String edit(@ModelAttribute("user") User user,
-                                       @RequestParam("role") String[] role){
+                       @RequestParam("role") String[] role) {
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
             roleSet.add(userServiceDao.getByName(roles));
@@ -75,7 +75,7 @@ public class adminController {
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") String id){
+    public String deleteUser(@PathVariable(name = "id") String id) {
         Long userId = Long.parseLong(id);
         userServiceDao.deleteUser(userId);
         return "redirect:/admin";

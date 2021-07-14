@@ -17,7 +17,6 @@ import java.util.Set;
 public class UserServiceDaoImpl implements UserServiceDao{
 
     private UserDAO userDAO;
-
     private RoleDAO roleDAO;
 
     @Autowired
@@ -27,14 +26,14 @@ public class UserServiceDaoImpl implements UserServiceDao{
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAllUser() {
         return userDAO.getAllUser();
     }
 
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getUser(Long id) {
         return userDAO.getUser(id);
     }

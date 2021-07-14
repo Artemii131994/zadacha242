@@ -18,28 +18,17 @@ import java.util.List;
 @RequestMapping("")
 public class userController {
 
-    @Autowired
     private UserServiceDao userServiceDao;
+
+    @Autowired
+    public userController(UserServiceDao userServiceDao) {
+        this.userServiceDao = userServiceDao;
+    }
 
     @GetMapping("/user")
     public String showAllUser(Model model){
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        model.addAttribute("user_user", userServiceDao.ByUserName(auth.getName()));
-//        User user = userServiceDao.ByUserName(principal.getName());
-//        model.addAttribute(user);
         List<User> user = userServiceDao.getAllUser();
         model.addAttribute("user_user", user);
-
-
-//        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user_user", user);
-//        //return "users";
-
-//        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        model.addAttribute("user_user", userDetails);
-
         return "user";
-
-
     }
 }
