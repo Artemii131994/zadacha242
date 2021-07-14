@@ -7,16 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface RoleDAO {
-    List<Role> getAllRoles();
 
-    void add(Role role);
-
-    void edit(Role role);
-
-    Role getById(long id);
-
-    Role getByName(String name);
-    Set<Role> findRoleSetById(Integer[] id_roles);
-    public Set<Role> getRole();
-    public Role getDefaultRole();
+  public Role getByName(String name);
 }
+

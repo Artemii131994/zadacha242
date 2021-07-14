@@ -23,10 +23,7 @@ public class UserDAOImpl implements UserDAO {
         return allUser;
     }
 
-    @Override
-    public void saveUser(User user) {
-        entityManager.persist(user);
-    }
+
 
     @Override
     public User getUser(Long id) {

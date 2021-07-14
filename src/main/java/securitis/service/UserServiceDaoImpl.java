@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-
 public class UserServiceDaoImpl implements UserServiceDao{
 
     private UserDAO userDAO;
@@ -33,11 +32,6 @@ public class UserServiceDaoImpl implements UserServiceDao{
         return userDAO.getAllUser();
     }
 
-    @Override
-    @Transactional
-    public void saveUser(User user) {
-        userDAO.saveUser(user);
-    }
 
     @Override
     @Transactional
@@ -59,50 +53,10 @@ public class UserServiceDaoImpl implements UserServiceDao{
 
     @Override
     @Transactional
-    public User ByUserName(String s) {
-        return userDAO.ByUserName(s);
-    }
-        @Override
-    @Transactional
-    public List<Role> getAllRoles() {
-        return roleDAO.getAllRoles();
-    }
-
-    @Override
-    @Transactional
-    public void add(Role role) {
-        roleDAO.add(role);
-    }
-
-    @Override
-    @Transactional
-    public void edit(Role role) {
-        roleDAO.edit(role);
-    }
-
-    @Override
-    @Transactional
-    public Role getById(long id) {
-        return roleDAO.getById(id);
-    }
-
-    @Override
-    @Transactional
     public Role getByName(String name) {
         return roleDAO.getByName(name);
     }
 
-    @Override
-    @Transactional
-    public Set<Role> findRoleSetById(Integer[] id_roles) {
-        return roleDAO.findRoleSetById(id_roles);
-    }
-
-    @Override
-    @Transactional
-    public Set<Role> getRole() {
-        return roleDAO.getRole();
-    }
 
     @Override
     @Transactional
@@ -113,9 +67,5 @@ public class UserServiceDaoImpl implements UserServiceDao{
         }
         return user;
     }
-    @Override
-    @Transactional
-    public Role getDefaultRole(){
-       return  roleDAO.getDefaultRole();
-    }
+
 }

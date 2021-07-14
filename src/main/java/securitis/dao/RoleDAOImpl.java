@@ -17,27 +17,6 @@ public class RoleDAOImpl implements RoleDAO{
     @PersistenceContext
     private EntityManager entityManager;
 
-//    private UserDAO userDAO;
-
-    @Override
-    public List<Role> getAllRoles() {
-        return entityManager.createQuery("from Role").getResultList();
-    }
-
-    @Override
-    public void add(Role role) {
-        entityManager.persist(role);
-    }
-
-    @Override
-    public void edit(Role role) {
-        entityManager.merge(role);
-    }
-
-    @Override
-    public Role getById(long id) {
-        return entityManager.find(Role.class, id);
-    }
 
     @Override
     public Role getByName(String name) {
@@ -48,28 +27,4 @@ public class RoleDAOImpl implements RoleDAO{
                 .getSingleResult();
     }
 
-    @Override
-    public Set<Role> findRoleSetById(Integer[] id_roles) {
-        Set<Role> roleSet = new HashSet<>();
-        for (Integer id : id_roles) {
-            roleSet.add(getById(id));
-        }
-        return roleSet;
-
-    }
-
-
-    @Override
-    public Set<Role> getRole() {
-        Set<Role> setrole = new HashSet<>();
-        List<Role> listrole = entityManager.createQuery("select role from Role role").getResultList();
-        setrole.addAll(listrole);
-
-        return setrole;
-    }
-
-    @Override
-    public Role getDefaultRole() {
-        return getByName("ROLE_GUEST");
-    }
 }

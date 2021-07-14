@@ -20,11 +20,8 @@ import java.util.Set;
 @RequestMapping("")
 public class adminController {
 
+     private UserServiceDao userServiceDao;
 
-//    @Autowired
-    private UserServiceDao userServiceDao;
-//    @Autowired
-//    private RoleServiceDao roleServiceDao;
     @Autowired
     public adminController(UserServiceDao userServiceDao) {
         this.userServiceDao = userServiceDao;
@@ -33,26 +30,21 @@ public class adminController {
 
     @GetMapping("/admin")
     public String showAllUser(Model model) {
-
         List<User> allUser = userServiceDao.getAllUser();
         model.addAttribute("allUser", allUser);
-
         return "userList";
     }
 
     @GetMapping("/addNewUser")
     public String addNewUser(Model model){
-
         User user = new User();
         model.addAttribute("user",user);
-
         return "createUser";
     }
 
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user")  User user,
                            @RequestParam("role") String[] role) {
-
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
             roleSet.add(userServiceDao.getByName(roles));
@@ -71,11 +63,8 @@ public class adminController {
     }
 
     @PostMapping("/updateSave")
-    public String edit(@ModelAttribute("user") @Valid User user,
-                       BindingResult bindingResult,
-                       @RequestParam("role") String[] role){
-        if (bindingResult.hasErrors())
-            return "updateUser";
+    public String edit(@ModelAttribute("user") User user,
+                                       @RequestParam("role") String[] role){
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
             roleSet.add(userServiceDao.getByName(roles));
