@@ -75,9 +75,8 @@ public class adminController {
     }
 
     @DeleteMapping("/deleteUser/{id}")
-    public String deleteUser(@PathVariable(name = "id") String id) {
-        Long userId = Long.parseLong(id);
-        userServiceDao.deleteUser(userId);
+    public String deleteUser(@PathVariable(name = "id") Long id) {
+        userServiceDao.deleteUser(id);
         return "redirect:/admin";
     }
 
