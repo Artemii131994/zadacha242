@@ -7,6 +7,8 @@ import securitis.model.User;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Repository
@@ -24,10 +26,13 @@ public class RoleDAOImpl implements RoleDAO{
                 .setParameter("role", name)
                 .getSingleResult();
     }
-
     @Override
-    public Role getRole(Long id) {
-        return entityManager.getReference(Role.class, id);
+    public Set<Role> byRole(User user,String[] role) {
+        Set<Role> roleSet = new HashSet<>();
+        for (String roles : role) {
+            roleSet.add(getByName(roles));
+        }
+        user.setRoles(roleSet);
+        return roleSet;
     }
-
 }
