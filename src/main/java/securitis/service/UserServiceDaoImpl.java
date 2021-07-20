@@ -20,16 +20,17 @@ import java.util.Set;
 @Service
 public class UserServiceDaoImpl implements UserServiceDao {
 
-    @Autowired
+  //  @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     private UserDAO userDAO;
     private RoleDAO roleDAO;
 
     @Autowired
-    public UserServiceDaoImpl(UserDAO userDAO, RoleDAO roleDAO) {
+    public UserServiceDaoImpl(UserDAO userDAO, RoleDAO roleDAO, BCryptPasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.roleDAO = roleDAO;
+        this.passwordEncoder=passwordEncoder;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
 
     @Override
     @Transactional
-    public void update(User user) {
+    public boolean update(User user) {
 //        User userFromDB = userDAO.ByUserName(user.getUsername());
 //
 //        if (userFromDB != null) {
@@ -57,7 +58,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
 //        user.setRoles(Collections.singleton(roleDAO.getRole(1L)));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.update(user);
-
+return true;
     }
 
 
@@ -74,14 +75,5 @@ public class UserServiceDaoImpl implements UserServiceDao {
     }
 
 
-    @Override
-    @Transactional
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        User user = userDAO.ByUserName(s);
-        if (user == null){
-            throw new UsernameNotFoundException("User not found");
-        }
-        return user;
-    }
 
 }
