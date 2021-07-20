@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.example</groupId>
-  <artifactId>zadacha_spring_security_three</artifactId>
+  <artifactId>zadacha_spring_security</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>zadacha_spring_security_three Maven Webapp</name>
+  <name>zadacha_spring_security Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -51,7 +51,7 @@
     <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
     <dependency>
       <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>//+
+      <artifactId>hibernate-core</artifactId>
       <version>5.5.2.Final</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
@@ -67,6 +67,12 @@
       <version>2.0.1.Final</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
 
 
 
@@ -79,7 +85,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.25</version>//+
+      <version>8.0.25</version>
     </dependency>
 
     <dependency>
@@ -111,7 +117,7 @@
   </dependencies>
 
   <build>
-    <finalName>zadacha_spring_security_three</finalName>
+    <finalName>zadacha_spring_security</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>

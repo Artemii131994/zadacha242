@@ -1,4 +1,4 @@
-package securitis.security;
+package securitis.config.security;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

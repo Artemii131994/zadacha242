@@ -25,4 +25,9 @@ public class RoleDAOImpl implements RoleDAO{
                 .getSingleResult();
     }
 
+    @Override
+    public Role getRole(Long id) {
+        return entityManager.getReference(Role.class, id);
+    }
+
 }

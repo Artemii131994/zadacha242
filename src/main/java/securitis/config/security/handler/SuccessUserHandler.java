@@ -1,4 +1,4 @@
-package securitis.security;
+package securitis.config.security.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
