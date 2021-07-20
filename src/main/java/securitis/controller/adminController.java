@@ -4,14 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import securitis.model.Role;
 import securitis.model.User;
 
 import securitis.service.UserServiceDao;
 
-import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,11 +43,7 @@ public class adminController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user,
                            @RequestParam("role") String[] role) {
-        Set<Role> roleSet = new HashSet<>();
-        for (String roles : role) {
-            roleSet.add(userServiceDao.getByName(roles));
-        }
-        user.setRoles(roleSet);
+        userServiceDao.byRole(user,role);
         userServiceDao.update(user);
 
         return "redirect:/admin";
@@ -65,11 +59,7 @@ public class adminController {
     @PutMapping("/updateSave")
     public String edit(@ModelAttribute("user") User user,
                        @RequestParam("role") String[] role) {
-        Set<Role> roleSet = new HashSet<>();
-        for (String roles : role) {
-            roleSet.add(userServiceDao.getByName(roles));
-        }
-        user.setRoles(roleSet);
+        userServiceDao.byRole(user,role);
         userServiceDao.update(user);
         return "redirect:/admin";
     }
