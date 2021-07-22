@@ -5,23 +5,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import securitis.model.Role;
 import securitis.model.User;
-
 import securitis.service.UserServiceDao;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("")
-public class adminController {
+public class AdminController {
 
     private UserServiceDao userServiceDao;
 
     @Autowired
-    public adminController(UserServiceDao userServiceDao) {
+    public AdminController(UserServiceDao userServiceDao) {
         this.userServiceDao = userServiceDao;
 
     }
