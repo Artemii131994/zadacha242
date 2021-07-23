@@ -27,7 +27,7 @@ public class User implements UserDetails {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -109,7 +109,7 @@ public class User implements UserDetails {
     }
 
     public Set<Role> getRoles() {
-        if (roles==null){
+        if (roles == null) {
             roles = new HashSet();
         }
         return roles;

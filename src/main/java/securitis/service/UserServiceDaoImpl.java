@@ -15,7 +15,6 @@ import java.util.Set;
 @Service
 public class UserServiceDaoImpl implements UserServiceDao {
 
-  //  @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
     private UserDAO userDAO;
@@ -25,7 +24,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
     public UserServiceDaoImpl(UserDAO userDAO, RoleDAO roleDAO, BCryptPasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.roleDAO = roleDAO;
-        this.passwordEncoder=passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -65,9 +64,15 @@ public class UserServiceDaoImpl implements UserServiceDao {
 
     @Override
     @Transactional
-    public Set<Role> byRole(User user,String[] role){
-        roleDAO.byRole(user,role);
+    public Set<Role> byRole(User user, String[] role) {
+        roleDAO.byRole(user, role);
         return null;
     }
 
+    @Override
+    @Transactional
+    public void add(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userDAO.add(user);
+    }
 }

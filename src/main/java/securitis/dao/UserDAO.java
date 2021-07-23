@@ -6,7 +6,6 @@ import securitis.model.User;
 import java.util.List;
 
 
-
 public interface UserDAO {
     public List<User> getAllUser();
 
@@ -18,5 +17,6 @@ public interface UserDAO {
 
     public User ByUserName(String s);
 
+    public void add(User user);
 
 }

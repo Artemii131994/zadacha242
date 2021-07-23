@@ -6,7 +6,7 @@ import securitis.model.User;
 import java.util.List;
 import java.util.Set;
 
-public interface UserServiceDao{
+public interface UserServiceDao {
 
     public List<User> getAllUser();
 
@@ -18,6 +18,8 @@ public interface UserServiceDao{
 
     public Role getByName(String name);
 
-    public Set<Role> byRole(User user,String[] role);
+    public Set<Role> byRole(User user, String[] role);
+
+    public void add(User user);
 
 }

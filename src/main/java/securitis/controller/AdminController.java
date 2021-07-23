@@ -39,8 +39,8 @@ public class AdminController {
     @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user,
                            @RequestParam("role") String[] role) {
-        userServiceDao.byRole(user,role);
-        userServiceDao.update(user);
+        userServiceDao.byRole(user, role);
+        userServiceDao.add(user);
 
         return "redirect:/admin";
     }
@@ -55,7 +55,7 @@ public class AdminController {
     @PutMapping("/updateSave")
     public String edit(@ModelAttribute("user") User user,
                        @RequestParam("role") String[] role) {
-        userServiceDao.byRole(user,role);
+        userServiceDao.byRole(user, role);
         userServiceDao.update(user);
         return "redirect:/admin";
     }

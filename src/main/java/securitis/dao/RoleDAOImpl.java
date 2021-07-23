@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 @Repository
-public class RoleDAOImpl implements RoleDAO{
+public class RoleDAOImpl implements RoleDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -26,8 +26,9 @@ public class RoleDAOImpl implements RoleDAO{
                 .setParameter("role", name)
                 .getSingleResult();
     }
+
     @Override
-    public Set<Role> byRole(User user,String[] role) {
+    public Set<Role> byRole(User user, String[] role) {
         Set<Role> roleSet = new HashSet<>();
         for (String roles : role) {
             roleSet.add(getByName(roles));
